@@ -13,6 +13,7 @@
 #define BUTTON_PORT	PORTD
 #define BUTTON_DDR	DDRD
 #define BUTTON		PD2
+#define DELAY		5 		// delay in milliseconds
 
 #define DEBOUNCE_TIME 1000 // microseconds
 
@@ -47,24 +48,24 @@ void PovAnimate(){
 	POVDisplay(0b00001110);
 
 	LED_PORT = 0;
-	_delay_ms(10);
+	_delay_ms(DELAY);
 }
 
 void clearLeds(){
 	LED_PORT = 0x00;
-	_delay_ms(5);
+	_delay_ms(DELAY);
 }
 
 void cyclonEyes(){
 	uint8_t i = 0;
 	while (i < 7){
 		LED_PORT = (1 << i);
-		_delay_ms(5);
+		_delay_ms(DELAY);
 		i++;
 	}
 	while (i < 255){
 		LED_PORT = (1 << i);
-		_delay_ms(5);
+		_delay_ms(DELAY);
 		i--;
 	}
 	LED_PORT = (0 << 0);
@@ -74,12 +75,12 @@ void cyclonEyesOr(){
 	uint8_t i = 0;
 	while (i <= 7){
 		LED_PORT |= (1 << i);
-		_delay_ms(5);
+		_delay_ms(DELAY);
 		i++;
 	}
 	while (i < 255){
 		LED_PORT &= ~(1 << i);
-		_delay_ms(5);
+		_delay_ms(DELAY);
 		i--;
 	}
 	LED_PORT |= (0 << 0);
@@ -89,12 +90,12 @@ void cyclonEyesInverted(){
 	uint8_t i = 0;
 	while (i < 7){
 		LED_PORT = ~(1 << i);
-		_delay_ms(5);
+		_delay_ms(DELAY);
 		i++;
 	}
 	while (i < 255){
 		LED_PORT = ~(1 << i);
-		_delay_ms(5);
+		_delay_ms(DELAY);
 		i--;
 	}
 	clearLeds();
@@ -158,11 +159,11 @@ int main (void)
 //    		PovAnimate();
 //    		CountBinary();
 //    		cyclonEyesOr();
-//    		_delay_ms(50);
+//    		_delay_ms(DELAY);
 //    		cyclonEyes();
-//    		_delay_ms(50);
+//    		_delay_ms(DELAY);
 //    		cyclonEyesInverted();
-//    		_delay_ms(50);
+//    		_delay_ms(DELAY);
     		toggleButton();
     }
     return 0;
