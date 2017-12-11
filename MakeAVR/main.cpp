@@ -1,21 +1,5 @@
-#define F_CPU 16000000UL
-
-#include <avr/io.h>
-#include <util/delay.h>
-
-#define LED_PORT		PORTB
-#define LED_DDR		DDRB
-#define SHREG_PORT	PORTD
-#define	SHREG_DDR	DDRD
-#define DATA			PD5
-#define SHIFT		PD6
-#define LATCH		PD7
-#define BUTTON_PORT	PORTD
-#define BUTTON_DDR	DDRD
-#define BUTTON		PD2
-#define DELAY		5 		// delay in milliseconds
-
-#define DEBOUNCE_TIME 1000 // microseconds
+#include "pinDefines.h"
+#include "buttonStuff.h"
 
 void POVDisplay(uint8_t oneByte) {
 	LED_PORT = oneByte;
@@ -115,37 +99,6 @@ void shiftData(){
 	SHREG_PORT |= (1 << DATA); //HIGH
 	SHREG_PORT &= ~(1 << DATA); //LOW
 }
-
-uint8_t debounce(void){
-	if (!(PIND & (1 << BUTTON))){       /* button is pressed */
-		_delay_us(DEBOUNCE_TIME);
-		if (!(PIND & (1 << BUTTON))){   /* button is still pressed */
-			return (1);
-		}
-	}
-	return (0);
-}
-
-void toggleButton(){
-	uint8_t buttonWasPressed = 0;
-    BUTTON_DDR &= ~(1 << BUTTON); // Set button pin to input by clearing the bit. Safety precaution
-    BUTTON_PORT |= (1 << BUTTON); // enable pull up resistor for button input pin
-    LED_PORT = 0b00111100;
-
-    while(1)
-    {
-		if (debounce()) {
-			if (buttonWasPressed == 0){
-    				LED_PORT ^= 0xff;
-    				buttonWasPressed = 1;
-			}
-    		}
-    		else {
-    			buttonWasPressed = 0;
-    		}
-    }
-}
-
 
 int main (void)
 {
