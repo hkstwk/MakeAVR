@@ -11,6 +11,17 @@ void POVDisplay(uint8_t oneByte) {
 	_delay_ms(10);
 }
 
+void CountBinary(){
+	for (uint8_t i=0;i<=255;i++){
+		POVDisplay(i);
+		if (i == 255) {
+			_delay_ms(2000);
+		} else {
+			_delay_us(1);
+		}
+	}
+}
+
 void PovAnimate(){
 	POVDisplay(0b00001110);
 	POVDisplay(0b00011000);

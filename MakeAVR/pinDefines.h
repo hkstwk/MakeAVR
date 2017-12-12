@@ -13,7 +13,6 @@
 
 #include <avr/io.h>
 #include <util/delay.h>
-#include "avr/interrupt.h"
 
 #define LED_PORT		PORTB
 #define LED_DDR		DDRB
@@ -30,15 +29,5 @@
 
 #define DEBOUNCE_TIME 1000 // microseconds
 
-//#define TIMER16					TCNT1
-//#define OUTPUT_COMP				OCR1A
-//#define TIMER_REGISTER_A 		TCCR1A
-//#define TIMER_REGISTER_B			TCCR1B
-//#define CTC_MODE					(1 << WGM12)
-//#define CLOCK_SELECT				(1 << CS11)
-////#define CLOCK_SELECT				(1 << CS12) | (1 << CS10)
-//#define TIMER_INTERRUPT_MASK		TIMSK1
-//#define COMPARE_MATCH_INTERRUPT	(1 << OCIE1A)
-//#define OUTPUT_COMPARE			OCR1A
 
 #endif /* PINDEFINES_H_ */
