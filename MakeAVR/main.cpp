@@ -1,58 +1,9 @@
 #include "pinDefines.h"
 //#include "c2_programming_avrs.h"
 #include "c3_digital_output.h"
-//#include "c4_bit_twiddling.h"
+#include "c4_bit_twiddling.h"
 //#include "c6_digital_input.h"
 
-void clearLeds(){
-	LED_PORT = 0x00;
-	_delay_ms(DELAY);
-}
-
-void cyclonEyes(){
-	uint8_t i = 0;
-	while (i < 7){
-		LED_PORT = (1 << i);
-		_delay_ms(DELAY);
-		i++;
-	}
-	while (i < 255){
-		LED_PORT = (1 << i);
-		_delay_ms(DELAY);
-		i--;
-	}
-	LED_PORT = (0 << 0);
-}
-
-void cyclonEyesOr(){
-	uint8_t i = 0;
-	while (i <= 7){
-		LED_PORT |= (1 << i);
-		_delay_ms(DELAY);
-		i++;
-	}
-	while (i < 255){
-		LED_PORT &= ~(1 << i);
-		_delay_ms(DELAY);
-		i--;
-	}
-	LED_PORT |= (0 << 0);
-}
-
-void cyclonEyesInverted(){
-	uint8_t i = 0;
-	while (i < 7){
-		LED_PORT = ~(1 << i);
-		_delay_ms(DELAY);
-		i++;
-	}
-	while (i < 255){
-		LED_PORT = ~(1 << i);
-		_delay_ms(DELAY);
-		i--;
-	}
-	clearLeds();
-}
 
 void shiftClock(){
 	SHREG_PORT |= (1 << SHIFT); //HIGH
@@ -107,14 +58,14 @@ int main (void)
 
 	while(1)
     {
-   		PovAnimate();
-    		CountBinary();
-//    		cyclonEyesOr();
-//    		_delay_ms(DELAY);
-//    		cyclonEyes();
-//    		_delay_ms(DELAY);
-//    		cyclonEyesInverted();
-//    		_delay_ms(DELAY);
+//   		PovAnimate();
+//    		CountBinary();
+    		cyclonEyesOr();
+    		_delay_ms(DELAY);
+    		cyclonEyes();
+    		_delay_ms(DELAY);
+    		cyclonEyesInverted();
+    		_delay_ms(DELAY);
 //    		toggleButton();
 //    		blinkingLed();
     }
