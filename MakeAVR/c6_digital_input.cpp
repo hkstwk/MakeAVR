@@ -1,4 +1,4 @@
-#include "buttonStuff.h"
+#include "c6_digital_input.h"
 
 uint8_t debounce(void){
 	if (!(PIND & (1 << BUTTON))){       /* button is pressed */

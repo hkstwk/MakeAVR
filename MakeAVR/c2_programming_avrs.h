@@ -8,8 +8,7 @@
 #ifndef C2_PROGRAMMING_AVRS_H_
 #define C2_PROGRAMMING_AVRS_H_
 
-void blinkingLed();
-void CountBinary();
+//void blinkingLed();
 
 
 #endif /* C2_PROGRAMMING_AVRS_H_ */
