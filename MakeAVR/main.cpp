@@ -2,6 +2,7 @@
 #include "c2_programming_avrs.h"
 #include "c3_digital_output.h"
 #include "c4_bit_twiddling.h"
+#include "c5_serial_io.h"
 #include "c6_digital_input.h"
 
 
@@ -35,8 +36,9 @@ int main (void)
 //    		_delay_ms(DELAY);
 //    		cyclonEyesInverted();
 //    		_delay_ms(DELAY);
-    		toggleButton();
+//    		toggleButton();
 //    		blinkingLed();
+		serialLoopback();
     }
 
     return 0;
