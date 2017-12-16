@@ -38,8 +38,8 @@ int main (void)
 //    		_delay_ms(DELAY);
 //    		toggleButton();
 //    		blinkingLed();
-//		serialLoopback();
-		testSerial();
+		serialLoopback();
+//		testSerial();
     }
 
     return 0;

@@ -35,7 +35,7 @@ void initUSART(void) {                                /* requires BAUD */
 	UBRR0H = (BRC >> 8);
 	UBRR0L =  BRC;
 
-	UCSR0B = (1 << TXEN0);
+	UCSR0B = (1 << TXEN0) | (1 << RXEN0);
 	UCSR0C = (1 << UCSZ01) | (1 << UCSZ00); /* 8 data bits, 1 stop bit */
 }
 
