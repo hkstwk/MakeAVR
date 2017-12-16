@@ -27,7 +27,7 @@
 #include "USART.h"
 //#include <util/setbaud.h>
 
-#define F_CPU 	2000000
+#define F_CPU 	2250000
 #define BAUD	  	9600
 #define BRC		((F_CPU/16/BAUD)-1)
 
