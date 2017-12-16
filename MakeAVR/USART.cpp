@@ -25,19 +25,18 @@
 
 #include <avr/io.h>
 #include "USART.h"
-#include <util/setbaud.h>
+//#include <util/setbaud.h>
+
+#define F_CPU 	2000000
+#define BAUD	  	9600
+#define BRC		((F_CPU/16/BAUD)-1)
 
 void initUSART(void) {                                /* requires BAUD */
-  UBRR0H = UBRRH_VALUE;                        /* defined in setbaud.h */
-  UBRR0L = UBRRL_VALUE;
-#if USE_2X
-  UCSR0A |= (1 << U2X0);
-#else
-  UCSR0A &= ~(1 << U2X0);
-#endif
-                                  /* Enable USART transmitter/receiver */
-  UCSR0B = (1 << TXEN0) | (1 << RXEN0);
-  UCSR0C = (1 << UCSZ01) | (1 << UCSZ00);   /* 8 data bits, 1 stop bit */
+	UBRR0H = (BRC >> 8);
+	UBRR0L =  BRC;
+
+	UCSR0B = (1 << TXEN0);
+	UCSR0C = (1 << UCSZ01) | (1 << UCSZ00); /* 8 data bits, 1 stop bit */
 }
 
 
