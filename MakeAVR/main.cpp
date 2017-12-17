@@ -58,20 +58,14 @@ int main (void)
 			   blinkingLed();
 			   break;
 		}
-
-//   		PovAnimate();
-//    		CountBinary();
 //    		cyclonEyesOr();
-//    		_delay_ms(DELAY);
 //    		cyclonEyes();
-//    		_delay_ms(DELAY);
 //    		cyclonEyesInverted();
-//    		_delay_ms(DELAY);
 //    		toggleButton();
 //    		blinkingLed();
-//		serialLoopback();
-//		testSerial();
-//		ledInterruptToggle();
+//			serialLoopback();
+//			testSerial();
+//			ledInterruptToggle();
     }
 
     return 0;
