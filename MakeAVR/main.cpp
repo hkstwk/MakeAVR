@@ -23,6 +23,8 @@ void shiftData(){
 	SHREG_PORT &= ~(1 << DATA); //LOW
 }
 
+volatile uint8_t animationIndex;
+
 int main (void)
 {
 	// Init stuff is done in pinDefines.h
@@ -35,8 +37,22 @@ int main (void)
 	/* Intitalize interrupt for toggle button on INT1 */
 	initInterrupt1();
 
+	animationIndex = 0;
+
 	while(1)
     {
+		switch (animationIndex){
+		   case 0:
+		      PovAnimate();
+		      break;
+		   case 1  :
+			   CountBinary();
+		      break;
+		   default :
+			   blinkingLed();
+			   break;
+		}
+
 //   		PovAnimate();
 //    		CountBinary();
 //    		cyclonEyesOr();
