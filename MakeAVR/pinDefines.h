@@ -16,7 +16,8 @@
 
 #define LED_PORT		PORTB
 #define LED_DDR		DDRB
-#define LED			PB0
+#define LED			PB1
+#define LED0			PB0
 #define SHREG_PORT	PORTD
 #define	SHREG_DDR	DDRD
 #define DATA			PD5

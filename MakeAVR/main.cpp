@@ -4,6 +4,7 @@
 #include "c4_bit_twiddling.h"
 #include "c5_serial_io.h"
 #include "c6_digital_input.h"
+#include "c8_hardware_interrupts.h"
 
 
 void shiftClock(){
@@ -38,8 +39,9 @@ int main (void)
 //    		_delay_ms(DELAY);
 //    		toggleButton();
 //    		blinkingLed();
-		serialLoopback();
+//		serialLoopback();
 //		testSerial();
+		ledInterruptToggle();
     }
 
     return 0;
