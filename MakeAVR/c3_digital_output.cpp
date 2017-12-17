@@ -6,28 +6,34 @@
  */
 #include "pinDefines.h"
 
+extern volatile uint8_t animationIndexChanged;
+
 void POVDisplay(uint8_t oneByte) {
 	LED_PORT = oneByte;
 	_delay_ms(DELAY);
 }
 
 void CountBinary(){
-	while (1){
+	while (1 & (animationIndexChanged == 0)){
 		for (uint8_t i=0;i<=255;i++){
+			/* break the for loop on INT1 interrupt */
+			if (animationIndexChanged){
+				break;
+			}
 			POVDisplay(i);
 			if (i == 255) {
-				_delay_ms(2000);
+				_delay_ms(DELAY);
 			} else {
 				_delay_us(1);
 			}
 		}
-		_delay_ms(2*DELAY);
+		_delay_ms(DELAY);
 		LED_PORT = 0;
 	}
 }
 
 void PovAnimate(){
-	while (1){
+	while (1 & (animationIndexChanged == 0)){
 		POVDisplay(0b00001110);
 		POVDisplay(0b00011000);
 		POVDisplay(0b10111101);
@@ -41,7 +47,7 @@ void PovAnimate(){
 		POVDisplay(0b00011000);
 		POVDisplay(0b00001110);
 
-		_delay_ms(2*DELAY);
+		_delay_ms(DELAY);
 		LED_PORT = 0;
 	}
 }

@@ -9,9 +9,19 @@
 #include <avr/interrupt.h>
 #include "pinDefines.h"
 
+extern volatile uint8_t animationIndex;
+extern volatile uint8_t animationIndexChanged;
+
 ISR(INT1_vect){
 	if (bit_is_clear(PIND,BUTTON_TGL)){
 		LED_PORT |= (1 << LED2);
+		if (animationIndex == 0){
+			animationIndex = 1;
+		}
+		else {
+			animationIndex = 0;
+		}
+		animationIndexChanged = 1;
 	}
 	else {
 		LED_PORT &= ~(1 << LED2);

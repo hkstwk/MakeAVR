@@ -24,6 +24,7 @@ void shiftData(){
 }
 
 volatile uint8_t animationIndex;
+volatile uint8_t animationIndexChanged;
 
 int main (void)
 {
@@ -38,9 +39,14 @@ int main (void)
 	initInterrupt1();
 
 	animationIndex = 0;
+	animationIndexChanged = 0;
 
 	while(1)
     {
+		/* check if animationIndexChanged is set by INT1. If so, reset to fasle (= 0) */
+		if (animationIndexChanged == 1){
+			animationIndexChanged = 0;
+		}
 		switch (animationIndex){
 		   case 0:
 		      PovAnimate();
@@ -65,7 +71,7 @@ int main (void)
 //    		blinkingLed();
 //		serialLoopback();
 //		testSerial();
-		ledInterruptToggle();
+//		ledInterruptToggle();
     }
 
     return 0;
