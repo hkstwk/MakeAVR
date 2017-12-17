@@ -15,8 +15,8 @@ extern volatile uint8_t animationIndexChanged;
 ISR(INT1_vect){
 	if (bit_is_clear(PIND,BUTTON_TGL)){
 		LED_PORT |= (1 << LED2);
-		if (animationIndex == 0){
-			animationIndex = 1;
+		if (animationIndex < (ANIMATION_CNT-1)){
+			animationIndex++;
 		}
 		else {
 			animationIndex = 0;

@@ -10,6 +10,8 @@
 
 #include "pinDefines.h"
 
+extern volatile uint8_t animationIndexChanged;
+
 void clearLeds(){
 	LED_PORT = 0x00;
 	_delay_ms(DELAY);
@@ -31,18 +33,23 @@ void cyclonEyes(){
 }
 
 void cyclonEyesOr(){
-	uint8_t i = 0;
-	while (i <= 7){
-		LED_PORT |= (1 << i);
-		_delay_ms(DELAY);
-		i++;
+	while (1){
+		uint8_t i = 0;
+		if (animationIndexChanged){
+			break;
+		}
+		while ((i <= 7) & (animationIndexChanged == 0)){
+			LED_PORT |= (1 << i);
+			_delay_ms(DELAY);
+			i++;
+		}
+		while ((i < 255) & (animationIndexChanged == 0)){
+			LED_PORT &= ~(1 << i);
+			_delay_ms(DELAY);
+			i--;
+		}
+		clearLeds();
 	}
-	while (i < 255){
-		LED_PORT &= ~(1 << i);
-		_delay_ms(DELAY);
-		i--;
-	}
-	clearLeds();
 }
 
 void cyclonEyesInverted(){

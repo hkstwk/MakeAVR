@@ -51,14 +51,16 @@ int main (void)
 		   case 0:
 		      PovAnimate();
 		      break;
-		   case 1  :
+		   case 1:
 			   CountBinary();
+		      break;
+		   case 2:
+			  cyclonEyesOr();
 		      break;
 		   default :
 			   blinkingLed();
 			   break;
 		}
-//    		cyclonEyesOr();
 //    		cyclonEyes();
 //    		cyclonEyesInverted();
 //    		toggleButton();
