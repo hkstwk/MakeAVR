@@ -27,6 +27,9 @@ int main (void)
 {
 	// Init stuff is done in pinDefines.h
 	LED_DDR = 0xff;
+	BUTTON_DDR &= ~(1 << BUTTON_TGL);
+	BUTTON_PORT |= (1 << BUTTON_TGL);	/* */
+	initInterrupt1();
 
 	while(1)
     {
@@ -42,7 +45,7 @@ int main (void)
 //    		blinkingLed();
 //		serialLoopback();
 //		testSerial();
-		ledInterrupt1Toggle();
+		ledInterruptToggle();
     }
 
     return 0;
