@@ -24,7 +24,7 @@ void ledInterruptToggle(){
 	initInterrupt0();
 
 	while (1){
-		_delay_ms(50);
+		_delay_ms(10);
 		LED_PORT ^= (1 << LED0);
 	}
 }

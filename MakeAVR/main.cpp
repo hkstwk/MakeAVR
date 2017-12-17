@@ -27,8 +27,12 @@ int main (void)
 {
 	// Init stuff is done in pinDefines.h
 	LED_DDR = 0xff;
+
+	/* Set toggle button pin to input by clearing the bit. Safety precaution */
 	BUTTON_DDR &= ~(1 << BUTTON_TGL);
-	BUTTON_PORT |= (1 << BUTTON_TGL);	/* */
+	/* enable pull up resistor for toggle button pin */
+	BUTTON_PORT |= (1 << BUTTON_TGL);
+	/* Intitalize interrupt for toggle button on INT1 */
 	initInterrupt1();
 
 	while(1)
