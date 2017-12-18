@@ -68,18 +68,30 @@ int main (void)
 			  blinkingLed2();
 		      break;
 		   case 6:
+			  /* sends letter 'Q' at regular intervals */
 			  testSerial();
 		      break;
 		   case 7:
+			  /* type text, set local echo on. after button press,
+			   * type one random character in serial monitor
+			   * to break the loop */
 			  serialLoopback();
+		      break;
+		   case 8:
+			   /* using polling mechanism,
+			    * waiting forever for button press*/
+			   toggleButton();
+		      break;
+		   case 9:
+			   /* using interrupt INT0,
+			    * can do other stuff, stops doing that when
+			    * button is pressed */
+			   ledInterruptToggle();
 		      break;
 		   default :
 			   blinkingLed2();
 			   break;
 		}
-//    		toggleButton();
-//			ledInterruptToggle();
     }
-
     return 0;
 }

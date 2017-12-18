@@ -9,6 +9,8 @@
 #include "makeavr_util.h"
 #include "c6_digital_input.h"
 
+extern volatile uint8_t animationIndexChanged;
+
 void toggleButton(){
 	uint8_t buttonWasPressed = 0;
     BUTTON_DDR &= ~(1 << BUTTON); // Set button pin to input by clearing the bit. Safety precaution
@@ -17,6 +19,9 @@ void toggleButton(){
 
     while(1)
     {
+		if (animationIndexChanged){
+			break;
+		}
 		if (debounce(BUTTON)) {
 			if (buttonWasPressed == 0){
     				LED_PORT ^= 0xff;
