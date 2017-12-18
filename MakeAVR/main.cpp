@@ -57,12 +57,16 @@ int main (void)
 		   case 2:
 			  cyclonEyesOr();
 		      break;
+		   case 3:
+			  cyclonEyes();
+		      break;
+		   case 4:
+			  cyclonEyesInverted();
+		      break;
 		   default :
 			   blinkingLed();
 			   break;
 		}
-//    		cyclonEyes();
-//    		cyclonEyesInverted();
 //    		toggleButton();
 //    		blinkingLed();
 //			serialLoopback();
