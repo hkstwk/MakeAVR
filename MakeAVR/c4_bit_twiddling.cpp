@@ -20,12 +20,12 @@ void cyclonEyes(){
 			break;
 		}
 		while ((i < 7) & (animationIndexChanged == 0)){
-			LED_PORT = (1 << i);
+			HC595Write((1<<i));
 			_delay_ms(DELAY);
 			i++;
 		}
 		while ((i < 255) & (animationIndexChanged == 0)){
-			LED_PORT = (1 << i);
+			HC595Write((1<<i));
 			_delay_ms(DELAY);
 			i--;
 		}
@@ -36,16 +36,17 @@ void cyclonEyes(){
 void cyclonEyesOr(){
 	while (1){
 		uint8_t i = 0;
+		uint8_t leds = 0x00;
 		if (animationIndexChanged){
 			break;
 		}
 		while ((i <= 7) & (animationIndexChanged == 0)){
-			LED_PORT |= (1 << i);
+			HC595Write(leds |= (1<<i));
 			_delay_ms(DELAY);
 			i++;
 		}
 		while ((i < 255) & (animationIndexChanged == 0)){
-			LED_PORT &= ~(1 << i);
+			HC595Write(leds &= (~(1<<i)));
 			_delay_ms(DELAY);
 			i--;
 		}
@@ -60,12 +61,12 @@ void cyclonEyesInverted(){
 			break;
 		}
 		while ((i < 7) & (animationIndexChanged == 0)){
-			LED_PORT = ~(1 << i);
+			HC595Write(~(1<<i));
 			_delay_ms(DELAY);
 			i++;
 		}
 		while ((i < 255) & (animationIndexChanged == 0)){
-			LED_PORT = ~(1 << i);
+			HC595Write(~(1<<i));
 			_delay_ms(DELAY);
 			i--;
 		}

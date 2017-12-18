@@ -26,7 +26,7 @@ void CountBinary(){
 			if (animationIndexChanged){
 				break;
 			}
-			POVDisplay(i);
+			POVDisplayHC595(i);
 			if (i == 255) {
 				_delay_ms(DELAY);
 			} else {
