@@ -12,6 +12,11 @@
 extern volatile uint8_t animationIndex;
 extern volatile uint8_t animationIndexChanged;
 
+void clearLeds(){
+	LED_PORT = 0x00;
+	_delay_ms(DELAY);
+}
+
 uint8_t debounce(uint8_t btn){
 	if (!(PIND & (1 << btn))){       /* button is pressed */
 		_delay_us(DEBOUNCE_TIME);

@@ -43,7 +43,8 @@ int main (void)
 
 	while(1)
     {
-		/* check if animationIndexChanged is set by INT1. If so, reset to fasle (= 0) */
+		/* check if animationIndexChanged is set by INT1 (see makeavr_utils.cpp).
+		 * If so, reset to false (= 0) */
 		if (animationIndexChanged == 1){
 			animationIndexChanged = 0;
 		}
@@ -63,8 +64,11 @@ int main (void)
 		   case 4:
 			  cyclonEyesInverted();
 		      break;
+		   case 5:
+			  blinkingLed2();
+		      break;
 		   default :
-			   blinkingLed();
+			   blinkingLed2();
 			   break;
 		}
 //    		toggleButton();

@@ -9,13 +9,9 @@
 #define C4_BIT_TWIDDLING_CPP_
 
 #include "pinDefines.h"
+#include "makeavr_util.h"
 
 extern volatile uint8_t animationIndexChanged;
-
-void clearLeds(){
-	LED_PORT = 0x00;
-	_delay_ms(DELAY);
-}
 
 void cyclonEyes(){
 	while (1) {

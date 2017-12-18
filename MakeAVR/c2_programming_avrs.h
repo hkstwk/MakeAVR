@@ -22,6 +22,6 @@
 #define OUTPUT_COMPARE			OCR1A
 
 void blinkingLed();
-
+void blinkingLed2();
 
 #endif /* C2_PROGRAMMING_AVRS_H_ */
