@@ -7,22 +7,6 @@
 #include "c6_digital_input.h"
 #include "c8_hardware_interrupts.h"
 
-
-void shiftClock(){
-	SHREG_PORT |= (1 << SHIFT); //HIGH
-	SHREG_PORT &= ~(1 << SHIFT); //LOW
-}
-
-void shiftLatch(){
-	SHREG_PORT |= (1 << LATCH); //HIGH
-	SHREG_PORT &= ~(1 << LATCH); //LOW
-}
-
-void shiftData(){
-	SHREG_PORT |= (1 << DATA); //HIGH
-	SHREG_PORT &= ~(1 << DATA); //LOW
-}
-
 volatile uint8_t animationIndex;
 volatile uint8_t animationIndexChanged;
 
@@ -50,7 +34,7 @@ int main (void)
 		}
 		switch (animationIndex){
 		   case 0:
-		      PovAnimate();
+		      PovAnimateHC595();
 		      break;
 		   case 1:
 			   CountBinary();

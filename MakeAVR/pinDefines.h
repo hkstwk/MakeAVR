@@ -21,11 +21,6 @@
 #define LED0			PB0
 #define LED2			PB2
 #define LED3			PB3
-#define SHREG_PORT	PORTD
-#define	SHREG_DDR	DDRD
-#define DATA			PD5
-#define SHIFT		PD6
-#define LATCH		PD7
 #define BUTTON_PORT	PORTD
 #define BUTTON_DDR	DDRD
 #define BUTTON		PD2
