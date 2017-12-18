@@ -67,14 +67,17 @@ int main (void)
 		   case 5:
 			  blinkingLed2();
 		      break;
+		   case 6:
+			  testSerial();
+		      break;
+		   case 7:
+			  serialLoopback();
+		      break;
 		   default :
 			   blinkingLed2();
 			   break;
 		}
 //    		toggleButton();
-//    		blinkingLed();
-//			serialLoopback();
-//			testSerial();
 //			ledInterruptToggle();
     }
 
