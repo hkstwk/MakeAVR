@@ -72,6 +72,9 @@ int main (void)
 			    * button is pressed */
 			   ledInterruptToggle();
 		      break;
+		   case 10:
+		      PovAnimate();
+		      break;
 		   default :
 			   blinkingLed2();
 			   break;

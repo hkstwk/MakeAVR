@@ -14,7 +14,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
-#define ANIMATION_CNT	10
+#define ANIMATION_CNT	11
 #define LED_PORT		PORTB
 #define LED_DDR		DDRB
 #define LED			PB1

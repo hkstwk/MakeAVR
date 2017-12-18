@@ -17,13 +17,13 @@ void blinkingLed(){
 
 void blinkingLed2(){
 	clearLeds();
-    LED_DDR  |= (1 << LED);
+    LED_DDR  |= (1 << LED3);
 
     while (1){
 		if (animationIndexChanged){
 			break;
 		}
-		LED_PORT ^= (1 << LED);
+		LED_PORT ^= (1 << LED3);
 		_delay_ms(50);
     }
 }
