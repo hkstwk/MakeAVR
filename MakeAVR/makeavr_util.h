@@ -8,6 +8,7 @@
 #ifndef MAKEAVR_UTIL_H_
 #define MAKEAVR_UTIL_H_
 
+uint8_t debounce(uint8_t btn);
 void initInterrupt1(void);
 void ledInterrupt1Toggle();
 

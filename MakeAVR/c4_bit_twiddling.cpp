@@ -73,7 +73,6 @@ void cyclonEyesInverted(){
 			_delay_ms(DELAY);
 			i--;
 		}
-		clearLeds();
 	}
 }
 

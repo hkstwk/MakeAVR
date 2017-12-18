@@ -5,17 +5,9 @@
  *      Author: harm
  */
 
+#include "pinDefines.h"
+#include "makeavr_util.h"
 #include "c6_digital_input.h"
-
-uint8_t debounce(void){
-	if (!(PIND & (1 << BUTTON))){       /* button is pressed */
-		_delay_us(DEBOUNCE_TIME);
-		if (!(PIND & (1 << BUTTON))){   /* button is still pressed */
-			return (1);
-		}
-	}
-	return (0);
-}
 
 void toggleButton(){
 	uint8_t buttonWasPressed = 0;
@@ -25,7 +17,7 @@ void toggleButton(){
 
     while(1)
     {
-		if (debounce()) {
+		if (debounce(BUTTON)) {
 			if (buttonWasPressed == 0){
     				LED_PORT ^= 0xff;
     				buttonWasPressed = 1;

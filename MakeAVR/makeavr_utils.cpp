@@ -12,19 +12,31 @@
 extern volatile uint8_t animationIndex;
 extern volatile uint8_t animationIndexChanged;
 
+uint8_t debounce(uint8_t btn){
+	if (!(PIND & (1 << btn))){       /* button is pressed */
+		_delay_us(DEBOUNCE_TIME);
+		if (!(PIND & (1 << btn))){   /* button is still pressed */
+			return (1);
+		}
+	}
+	return (0);
+}
+
 ISR(INT1_vect){
-	if (bit_is_clear(PIND,BUTTON_TGL)){
-		LED_PORT |= (1 << LED2);
-		if (animationIndex < (ANIMATION_CNT-1)){
-			animationIndex++;
+	if (debounce(BUTTON_TGL)) {
+		if (bit_is_clear(PIND,BUTTON_TGL)){
+			LED_PORT |= (1 << LED2);
+			if (animationIndex < (ANIMATION_CNT-1)){
+				animationIndex++;
+			}
+			else {
+				animationIndex = 0;
+			}
+			animationIndexChanged = 1;
 		}
 		else {
-			animationIndex = 0;
+			LED_PORT &= ~(1 << LED2);
 		}
-		animationIndexChanged = 1;
-	}
-	else {
-		LED_PORT &= ~(1 << LED2);
 	}
 }
 
