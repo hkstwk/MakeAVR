@@ -8,7 +8,7 @@
 #include "c8_hardware_interrupts.h"
 
 /* global variables used to control toggling of animations
- *
+ * using INT1 interrupt. Check makeavr_util.cpp for details
  */
 volatile uint8_t animationIndex;
 volatile uint8_t animationIndexChanged;
