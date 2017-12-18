@@ -7,6 +7,7 @@
 #include "c6_digital_input.h"
 #include "c8_hardware_interrupts.h"
 
+// global variables used to
 volatile uint8_t animationIndex;
 volatile uint8_t animationIndexChanged;
 
