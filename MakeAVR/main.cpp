@@ -6,6 +6,7 @@
 #include "c5_serial_io.h"
 #include "c6_digital_input.h"
 #include "c8_hardware_interrupts.h"
+#include "c14_switches.h"
 
 /* global variables used to control toggling of animations
  * using INT1 interrupt. Check makeavr_util.cpp for details
@@ -37,7 +38,8 @@ int main (void)
 		}
 		switch (animationIndex){
 		   case 0:
-		      PovAnimateHC595();
+//		      PovAnimateHC595();
+			  switchLedsOnOff();
 		      break;
 		   case 1:
 			   CountBinary();
@@ -62,7 +64,7 @@ int main (void)
 			  /* type text, set local echo on. after button press,
 			   * type one random character in serial monitor
 			   * to break the loop */
-			  serialLoopback();
+//			  serialLoopback();
 		      break;
 		   case 8:
 			   /* using polling mechanism,
